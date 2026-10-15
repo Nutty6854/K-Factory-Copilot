@@ -1,0 +1,707 @@
+{
+  "bytes": 2138988,
+  "triangles": 49532,
+  "bounds_m": {
+    "min": [
+      -0.2554999887943268,
+      -3.725290284584126e-10,
+      -0.33799999952316284
+    ],
+    "max": [
+      0.2554999887943268,
+      1.5819999974966048,
+      1.0720000000474974
+    ],
+    "w_d_h": [
+      0.5109999775886536,
+      1.4099999995706602,
+      1.581999997869134
+    ]
+  },
+  "dimension_checks": {
+    "base_width": 0.511,
+    "base_depth": 0.676,
+    "lower_link": 0.9,
+    "upper_offset": 0.15,
+    "upper_reference_to_j5": 0.786,
+    "j5_to_flange_face": 0.135,
+    "manufacturer_full_bounds": "unknown; no full-envelope ±2% certification"
+  },
+  "parts": [
+    {
+      "name": "robot_pilot",
+      "provenance": "추정(예시)",
+      "units": "m",
+      "up_axis": "+Y",
+      "front_axis": "+Z",
+      "origin": "base_floor_center",
+      "manufacturer_cad_used": false,
+      "reference_product": "ABB IRB 2600ID-15/1.85",
+      "pose": "upright lower arm; horizontal upper arm; illustrative joint zero",
+      "source_url": "https://search.abb.com/library/Download.aspx?DocumentID=3HAC085909-001&LanguageCode=en&Action=Launch",
+      "source_revision": "3HAC085909-001 Rev K page 16",
+      "authority": "visualization_only",
+      "detail_note": "All added casting contours, fasteners, cable paths, connectors, bores and materials are original illustrative design. Not a manufacturer CAD derivative."
+    },
+    {
+      "name": "base_plate",
+      "provenance": "추정(예시)",
+      "source_url": "https://search.abb.com/library/Download.aspx?DocumentID=3HAC085909-001&LanguageCode=en&Action=Launch",
+      "terms": "Original example geometry; no manufacturer CAD",
+      "dimension_provenance": "공개 규격에서 계산"
+    },
+    {
+      "name": "base_plinth",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "service_panel",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "base_bolts",
+      "provenance": "추정(예시)",
+      "source_url": null
+    },
+    {
+      "name": "j1",
+      "provenance": "추정(예시)",
+      "axis_local": [
+        0,
+        1,
+        0
+      ],
+      "range_deg": [
+        -180,
+        180
+      ],
+      "range_provenance": "공개 규격에서 계산",
+      "source_url": "https://search.abb.com/library/Download.aspx?DocumentID=3HAC085909-001&LanguageCode=en&Action=Launch",
+      "axis_sign_and_zero": "illustrative; not calibrated"
+    },
+    {
+      "name": "waist_ring",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "waist_shell",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "shoulder_support",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "j2",
+      "provenance": "추정(예시)",
+      "axis_local": [
+        1,
+        0,
+        0
+      ],
+      "range_deg": [
+        -95,
+        155
+      ],
+      "range_provenance": "공개 규격에서 계산",
+      "source_url": "https://search.abb.com/library/Download.aspx?DocumentID=3HAC085909-001&LanguageCode=en&Action=Launch",
+      "axis_sign_and_zero": "illustrative; not calibrated",
+      "position_note": "shoulder height 0.445m is illustration assumption; forward offset 0.150m from drawing"
+    },
+    {
+      "name": "shoulder_hub",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "shoulder_hub_cap_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "shoulder_hub_bolts_left",
+      "provenance": "추정(예시)",
+      "source_url": null
+    },
+    {
+      "name": "shoulder_hub_cap_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "shoulder_hub_bolts_right",
+      "provenance": "추정(예시)",
+      "source_url": null
+    },
+    {
+      "name": "j3",
+      "provenance": "추정(예시)",
+      "axis_local": [
+        1,
+        0,
+        0
+      ],
+      "range_deg": [
+        -180,
+        75
+      ],
+      "range_provenance": "공개 규격에서 계산",
+      "source_url": "https://search.abb.com/library/Download.aspx?DocumentID=3HAC085909-001&LanguageCode=en&Action=Launch",
+      "axis_sign_and_zero": "illustrative; not calibrated",
+      "translation_provenance": "공개 규격에서 계산"
+    },
+    {
+      "name": "elbow_hub",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "elbow_hub_cap_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "elbow_hub_bolts_left",
+      "provenance": "추정(예시)",
+      "source_url": null
+    },
+    {
+      "name": "elbow_hub_cap_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "elbow_hub_bolts_right",
+      "provenance": "추정(예시)",
+      "source_url": null
+    },
+    {
+      "name": "upper_axis_offset",
+      "provenance": "추정(예시)",
+      "translation_provenance": "공개 규격에서 계산",
+      "source_url": "https://search.abb.com/library/Download.aspx?DocumentID=3HAC085909-001&LanguageCode=en&Action=Launch"
+    },
+    {
+      "name": "j4",
+      "provenance": "추정(예시)",
+      "axis_local": [
+        0,
+        0,
+        1
+      ],
+      "range_deg": [
+        -175,
+        175
+      ],
+      "range_provenance": "공개 규격에서 계산",
+      "source_url": "https://search.abb.com/library/Download.aspx?DocumentID=3HAC085909-001&LanguageCode=en&Action=Launch",
+      "axis_sign_and_zero": "illustrative; not calibrated"
+    },
+    {
+      "name": "roll_seal",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "roll_housing",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "j5",
+      "provenance": "추정(예시)",
+      "axis_local": [
+        1,
+        0,
+        0
+      ],
+      "range_deg": [
+        -120,
+        120
+      ],
+      "range_provenance": "공개 규격에서 계산",
+      "source_url": "https://search.abb.com/library/Download.aspx?DocumentID=3HAC085909-001&LanguageCode=en&Action=Launch",
+      "axis_sign_and_zero": "illustrative; not calibrated",
+      "translation_note": "upper elbow reference to j5 = 0.786m; division at j4 is illustrative"
+    },
+    {
+      "name": "wrist_hub",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "wrist_hub_cap_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "wrist_hub_bolts_left",
+      "provenance": "추정(예시)",
+      "source_url": null
+    },
+    {
+      "name": "wrist_hub_cap_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "wrist_hub_bolts_right",
+      "provenance": "추정(예시)",
+      "source_url": null
+    },
+    {
+      "name": "wrist_yoke",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "j6",
+      "provenance": "추정(예시)",
+      "axis_local": [
+        0,
+        0,
+        1
+      ],
+      "range_deg": [
+        -400,
+        400
+      ],
+      "range_provenance": "공개 규격에서 계산",
+      "source_url": "https://search.abb.com/library/Download.aspx?DocumentID=3HAC085909-001&LanguageCode=en&Action=Launch",
+      "axis_sign_and_zero": "illustrative; not calibrated"
+    },
+    {
+      "name": "flange_neck",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "bored_tool_flange",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "flange_outer_lip",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "wrist_seal_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "wrist_center_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "wrist_center_lip_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "wrist_plug_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "wrist_seal_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "wrist_center_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "wrist_center_lip_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "wrist_plug_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "wrist_hub_bolts_left_sockets",
+      "provenance": "추정(예시)"
+    },
+    {
+      "name": "wrist_hub_bolts_right_sockets",
+      "provenance": "추정(예시)"
+    },
+    {
+      "name": "forearm_casting",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD",
+      "connection_note": "Continuous illustrative elbow-to-forearm surface; previous elbow box removed to prevent intersecting seams"
+    },
+    {
+      "name": "forearm_gasket",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "forearm_cover",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "forearm_cover_screws",
+      "provenance": "추정(예시)",
+      "source_url": null
+    },
+    {
+      "name": "forearm_cover_screws_sockets",
+      "provenance": "추정(예시)"
+    },
+    {
+      "name": "elbow_seal_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "elbow_center_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "elbow_center_lip_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "elbow_plug_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "elbow_seal_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "elbow_center_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "elbow_center_lip_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "elbow_plug_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "elbow_hub_bolts_left_sockets",
+      "provenance": "추정(예시)"
+    },
+    {
+      "name": "elbow_hub_bolts_right_sockets",
+      "provenance": "추정(예시)"
+    },
+    {
+      "name": "lower_arm_casting",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "arm_rib_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "arm_rib_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "lower_gasket",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "lower_service_cover",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "lower_cover_screws",
+      "provenance": "추정(예시)",
+      "source_url": null
+    },
+    {
+      "name": "shoulder_seal_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "shoulder_center_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "shoulder_center_lip_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "shoulder_plug_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "shoulder_seal_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "shoulder_center_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "shoulder_center_lip_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "shoulder_plug_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "shoulder_hub_bolts_left_sockets",
+      "provenance": "추정(예시)"
+    },
+    {
+      "name": "shoulder_hub_bolts_right_sockets",
+      "provenance": "추정(예시)"
+    },
+    {
+      "name": "lower_cover_screws_sockets",
+      "provenance": "추정(예시)"
+    },
+    {
+      "name": "lower_service_conduit",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "conduit_corrugations",
+      "provenance": "추정(예시)"
+    },
+    {
+      "name": "conduit_clamp_0_2",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "conduit_clamp_0_66",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "waist_seal_0_011",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "waist_seal_0_069",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "waist_seal_0_2",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "motor_collar",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "motor_can",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "motor_end",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "motor_fin_0",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "motor_fin_1",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "motor_fin_2",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "motor_fin_3",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "motor_fin_4",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "base_bolts_sockets",
+      "provenance": "추정(예시)"
+    },
+    {
+      "name": "connector_gasket",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "connector_plate",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "connector_0",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "connector_ring_0",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "connector_face_0",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "connector_1",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "connector_ring_1",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "connector_face_1",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "connector_2",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "connector_ring_2",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    },
+    {
+      "name": "connector_face_2",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original example geometry; no manufacturer CAD"
+    }
+  ]
+}

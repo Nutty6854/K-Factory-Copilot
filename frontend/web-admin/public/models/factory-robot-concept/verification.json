@@ -1,0 +1,538 @@
+{
+  "bytes": 1734428,
+  "triangles": 30008,
+  "bounds_m": {
+    "min": [
+      -0.3199999928474426,
+      1.4901161207725444e-10,
+      -0.36000001430511475
+    ],
+    "max": [
+      0.3199999928474426,
+      1.3409999981522562,
+      0.7429999992251396
+    ],
+    "w_d_h": [
+      0.6399999856948853,
+      1.1030000135302545,
+      1.3409999980032445
+    ]
+  },
+  "own_design_dimensions_m": {
+    "base_width": 0.64,
+    "base_depth": 0.72,
+    "shoulder_height": 0.41,
+    "lower_link_translation": [
+      0,
+      0.75,
+      -0.14
+    ],
+    "upper_offset": 0.09,
+    "upper_reference_to_j5": 0.635,
+    "j5_to_flange_face": 0.138
+  },
+  "unknown": [
+    "payload",
+    "rated reach",
+    "speed",
+    "torque",
+    "structural strength",
+    "actual joint limits",
+    "collision-free motion"
+  ],
+  "parts": [
+    {
+      "name": "factory_robot_concept",
+      "provenance": "추정(예시)",
+      "design_origin": "original visualization design",
+      "units": "m",
+      "up_axis": "+Y",
+      "front_axis": "+Z",
+      "origin": "base_floor_center",
+      "manufacturer_cad_used": false,
+      "source_url": null,
+      "reference_product": null,
+      "authority": "visual_concept_only",
+      "performance": "unknown; no payload/reach/safety rating",
+      "pose": "own review pose; not controller zero",
+      "design_note": "Broad base; swept-back lower arm; continuous elbow/forearm shell; lateral maintenance covers; neutral finish. General industry features observed in ABB/Yaskawa references; no CAD parts imported or traced."
+    },
+    {
+      "name": "base_plate",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "floor_mount_bolts",
+      "provenance": "추정(예시)",
+      "source_url": null
+    },
+    {
+      "name": "base_body",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "base_service_panel",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used",
+      "placement": "rear_-Z",
+      "connector_outward_axis_local": [
+        0,
+        0,
+        1
+      ],
+      "connection_assignment": "unspecified visualization connectors"
+    },
+    {
+      "name": "base_service_seal",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "base_service_cover",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "service_connector_0",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "service_connector_1",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "service_connector_2",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "j1",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used",
+      "axis_local": [
+        0,
+        1,
+        0
+      ],
+      "zero_and_sign": "own visualization convention; not a real controller",
+      "range_deg": null
+    },
+    {
+      "name": "waist_seal",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "waist_casting",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "shoulder_pedestal",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "j2",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used",
+      "axis_local": [
+        1,
+        0,
+        0
+      ],
+      "zero_and_sign": "own visualization convention; not a real controller",
+      "range_deg": null
+    },
+    {
+      "name": "shoulder_drum",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "shoulder_cap_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "shoulder_inset_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "shoulder_bolts_left",
+      "provenance": "추정(예시)",
+      "source_url": null
+    },
+    {
+      "name": "shoulder_cap_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "shoulder_inset_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "shoulder_bolts_right",
+      "provenance": "추정(예시)",
+      "source_url": null
+    },
+    {
+      "name": "lower_arm_casting",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "lower_cover_mount",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "lower_service_gasket",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "lower_service_cover",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used",
+      "shared_plate_spec": {
+        "thickness": 0.013,
+        "shortSide": 0.085,
+        "longSide": 0.177
+      },
+      "mounting": "original integral boss with four fasteners"
+    },
+    {
+      "name": "lower_cover_bolts",
+      "provenance": "추정(예시)",
+      "source_url": null
+    },
+    {
+      "name": "j3",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used",
+      "axis_local": [
+        1,
+        0,
+        0
+      ],
+      "zero_and_sign": "own visualization convention; not a real controller",
+      "range_deg": null
+    },
+    {
+      "name": "elbow_drum",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "elbow_cap_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "elbow_inset_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "elbow_bolts_left",
+      "provenance": "추정(예시)",
+      "source_url": null
+    },
+    {
+      "name": "elbow_cap_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "elbow_inset_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "elbow_bolts_right",
+      "provenance": "추정(예시)",
+      "source_url": null
+    },
+    {
+      "name": "upper_arm_offset",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "elbow_forearm_casting",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "forearm_cover_mount",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "forearm_service_seal",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "forearm_service_cover",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used",
+      "shared_plate_spec": {
+        "thickness": 0.013,
+        "shortSide": 0.085,
+        "longSide": 0.177
+      }
+    },
+    {
+      "name": "forearm_cover_bolts",
+      "provenance": "추정(예시)",
+      "source_url": null
+    },
+    {
+      "name": "j4",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used",
+      "axis_local": [
+        0,
+        0,
+        1
+      ],
+      "zero_and_sign": "own visualization convention; not a real controller",
+      "range_deg": null
+    },
+    {
+      "name": "roll_collar",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "wrist_barrel",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "j5",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used",
+      "axis_local": [
+        1,
+        0,
+        0
+      ],
+      "zero_and_sign": "own visualization convention; not a real controller",
+      "range_deg": null
+    },
+    {
+      "name": "wrist_drum",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "wrist_cap_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "wrist_inset_left",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "wrist_bolts_left",
+      "provenance": "추정(예시)",
+      "source_url": null
+    },
+    {
+      "name": "wrist_cap_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "wrist_inset_right",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "wrist_bolts_right",
+      "provenance": "추정(예시)",
+      "source_url": null
+    },
+    {
+      "name": "wrist_yoke",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "wrist_to_tool_coupler",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "j6",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used",
+      "axis_local": [
+        0,
+        0,
+        1
+      ],
+      "zero_and_sign": "own visualization convention; not a real controller",
+      "range_deg": null
+    },
+    {
+      "name": "tool_neck",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "tool_flange",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "service_conduit",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "conduit_entry_0",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used",
+      "purpose": "illustrative cable entry; same rigid lower-arm link"
+    },
+    {
+      "name": "conduit_entry_seal_0",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "conduit_entry_collar_0",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "conduit_entry_1",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used",
+      "purpose": "illustrative cable entry; same rigid lower-arm link"
+    },
+    {
+      "name": "conduit_entry_seal_1",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "conduit_entry_collar_1",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "conduit_clamp_0",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "conduit_bracket_0",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "conduit_mount_foot_0",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "conduit_mount_bolts_0",
+      "provenance": "추정(예시)",
+      "source_url": null
+    },
+    {
+      "name": "conduit_clamp_1",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "conduit_bracket_1",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "conduit_mount_foot_1",
+      "provenance": "추정(예시)",
+      "source_url": null,
+      "terms": "Original illustrative geometry; no manufacturer CAD geometry used"
+    },
+    {
+      "name": "conduit_mount_bolts_1",
+      "provenance": "추정(예시)",
+      "source_url": null
+    }
+  ]
+}

@@ -1,0 +1,784 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://k-factory-copilot/contracts/schemas/factory_profile.schema.json",
+  "title": "FactoryProfile",
+  "description": "Single source of truth for one production line: what equipment exists, where it stands, what feeds what, and how sure we are about every number. 2D layout, 3D scene, dependency map and the simulator are all generated from this file.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "factory",
+    "assumptions",
+    "sources",
+    "catalog",
+    "equipment",
+    "routes",
+    "connections",
+    "flow"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1"
+    },
+    "factory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "line_id",
+        "industry",
+        "building_m"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "line_id": {
+          "type": "string"
+        },
+        "industry": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "building_m": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "w",
+            "d"
+          ],
+          "properties": {
+            "w": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "d": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          }
+        },
+        "utility_strip_depth_m": {
+          "type": "number",
+          "minimum": 0
+        },
+        "line_name_ko": {
+          "type": "string"
+        }
+      }
+    },
+    "assumptions": {
+      "description": "Inputs that drive takt time and equipment counts. All of these are choices, not measurements.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "annual_volume_units",
+        "working_days_per_year",
+        "shifts_per_day",
+        "productive_hours_per_shift",
+        "oee",
+        "max_utilization"
+      ],
+      "properties": {
+        "annual_volume_units": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "working_days_per_year": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 366
+        },
+        "shifts_per_day": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "productive_hours_per_shift": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 8
+        },
+        "oee": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "max_utilization": {
+          "description": "Above this a step is flagged as a bottleneck.",
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "title",
+          "url",
+          "accessed"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "accessed": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "catalog": {
+      "description": "Equipment TYPES (what a laser cutter is). Instances below reference these.",
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/definitions/equipmentType"
+      }
+    },
+    "equipment": {
+      "description": "Equipment INSTANCES (this laser cutter, standing here).",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/instance"
+      }
+    },
+    "routes": {
+      "description": "Physical corridors that lines run along (wall tray, floor trench, duct).",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "net",
+          "kind",
+          "polyline_m"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "net": {
+            "$ref": "#/definitions/net"
+          },
+          "kind": {
+            "enum": [
+              "bus",
+              "trench"
+            ]
+          },
+          "polyline_m": {
+            "$ref": "#/definitions/polyline"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "connections": {
+      "description": "Dependency graph: from supplies net to to.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/connection"
+      }
+    },
+    "flow": {
+      "description": "Material flow between process equipment.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "from",
+          "to",
+          "mode"
+        ],
+        "properties": {
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "conveyor",
+              "cart",
+              "agv",
+              "manual"
+            ]
+          },
+          "waypoints_m": {
+            "$ref": "#/definitions/polyline"
+          },
+          "route_m": {
+            "description": "Full polyline of the leg from the exit port of 'from' to the entry port of 'to'. When absent the leg runs centre to centre through waypoints_m.",
+            "$ref": "#/definitions/polyline"
+          }
+        }
+      }
+    },
+    "reference_part": {
+      "description": "Id of the part every cycle model is evaluated for.",
+      "type": "string"
+    },
+    "parts": {
+      "description": "Representative parts. Cycle times are derived from these plus the process parameters of each cycle_model.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name_ko",
+          "thickness_mm",
+          "blank_mm",
+          "cut_length_m",
+          "pierces",
+          "holes",
+          "hole_depth_mm",
+          "bends",
+          "length_m",
+          "seam_length_m",
+          "seams",
+          "parts_per_box",
+          "provenance"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name_ko": {
+            "type": "string"
+          },
+          "material": {
+            "type": "string"
+          },
+          "thickness_mm": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "blank_mm": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "l",
+              "w"
+            ],
+            "properties": {
+              "l": {
+                "type": "number"
+              },
+              "w": {
+                "type": "number"
+              }
+            }
+          },
+          "cut_length_m": {
+            "type": "number",
+            "minimum": 0
+          },
+          "pierces": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "holes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "hole_depth_mm": {
+            "type": "number",
+            "minimum": 0
+          },
+          "bends": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "length_m": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "seam_length_m": {
+            "type": "number",
+            "minimum": 0
+          },
+          "seams": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "parts_per_box": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "provenance": {
+            "$ref": "#/definitions/provenance"
+          }
+        }
+      }
+    },
+    "shared_systems": {
+      "description": "Named systems that several machines share (what an incident can propagate along).",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name_ko",
+          "kind"
+        ],
+        "properties": {
+          "name_ko": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "cooling_line",
+              "power_zone"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "net": {
+      "enum": [
+        "power",
+        "cooling",
+        "air",
+        "gas",
+        "exhaust",
+        "signal",
+        "bundle"
+      ]
+    },
+    "polyline": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "items": {
+          "type": "number"
+        }
+      }
+    },
+    "provenance": {
+      "description": "How much to trust a value. 'sourced' = read directly from the primary source (manufacturer page or datasheet). 'secondary' = taken from a dealer, aggregator or a summary of a primary source we could not open. 'assumed' = our own choice. 'sourced' and 'secondary' must cite at least one entry of sources[].",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "confidence"
+      ],
+      "properties": {
+        "confidence": {
+          "enum": [
+            "sourced",
+            "secondary",
+            "assumed"
+          ]
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "if": {
+        "properties": {
+          "confidence": {
+            "enum": [
+              "sourced",
+              "secondary"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "source_ids"
+        ]
+      }
+    },
+    "equipmentType": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name_ko",
+        "category",
+        "footprint_m",
+        "provenance"
+      ],
+      "properties": {
+        "name_ko": {
+          "type": "string"
+        },
+        "model": {
+          "description": "Reference product the dimensions were taken from, if any.",
+          "type": "string"
+        },
+        "spec_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "category": {
+          "enum": [
+            "process",
+            "robot",
+            "utility",
+            "logistics",
+            "storage",
+            "control"
+          ]
+        },
+        "footprint_m": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "w",
+            "d",
+            "h"
+          ],
+          "properties": {
+            "w": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "d": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "h": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          }
+        },
+        "shape": {
+          "enum": [
+            "box",
+            "ellipse",
+            "robot"
+          ]
+        },
+        "reach_m": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "cycle_time_s": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "consumes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/net"
+          }
+        },
+        "provides": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/net"
+          }
+        },
+        "sensors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "key",
+              "unit",
+              "baseline"
+            ],
+            "properties": {
+              "key": {
+                "type": "string"
+              },
+              "unit": {
+                "type": "string"
+              },
+              "baseline": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "footprint_m"
+          ],
+          "properties": {
+            "footprint_m": {
+              "$ref": "#/definitions/provenance"
+            },
+            "cycle_time_s": {
+              "$ref": "#/definitions/provenance"
+            },
+            "consumes": {
+              "$ref": "#/definitions/provenance"
+            }
+          }
+        },
+        "cycle_model": {
+          "$ref": "#/definitions/cycleModel"
+        }
+      }
+    },
+    "instance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "position_m"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "type": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "label": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "sub": {
+              "type": "string"
+            },
+            "below": {
+              "type": "string"
+            },
+            "side": {
+              "enum": [
+                "right",
+                "below",
+                "left"
+              ]
+            }
+          }
+        },
+        "position_m": {
+          "description": "Centre of the footprint on the floor plan (x right, y toward the operator side).",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "x",
+            "y"
+          ],
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            }
+          }
+        },
+        "footprint_m": {
+          "description": "Overrides the catalog footprint (w, d only).",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "w": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "d": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          }
+        },
+        "rotation_deg": {
+          "type": "number"
+        },
+        "role": {
+          "type": "string"
+        },
+        "process_step": {
+          "type": "string"
+        },
+        "cycle_time_s": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "cycle_time_provenance": {
+          "$ref": "#/definitions/provenance"
+        },
+        "shared_systems": {
+          "description": "Same keys the demo uses (coolingLine / powerZone), so incidents can propagate along them.",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "cooling_line": {
+              "type": "string"
+            },
+            "power_zone": {
+              "type": "string"
+            }
+          }
+        },
+        "demo_id": {
+          "description": "id used by the existing web-admin demo data, if any.",
+          "type": "string"
+        },
+        "cycle_model": {
+          "$ref": "#/definitions/cycleModel"
+        },
+        "name_ko": {
+          "description": "Display name in the UI.",
+          "type": "string"
+        },
+        "role_short": {
+          "description": "One-word role for lists and tags.",
+          "type": "string"
+        }
+      }
+    },
+    "connection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "net",
+        "from",
+        "to",
+        "status",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "net": {
+          "$ref": "#/definitions/net"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "route": {
+          "description": "Corridor id; the drop to the consumer is drawn automatically.",
+          "type": "string"
+        },
+        "drop_offset_m": {
+          "description": "Shifts the drop sideways so lines do not run through each other.",
+          "type": "number"
+        },
+        "waypoints_m": {
+          "$ref": "#/definitions/polyline"
+        },
+        "status": {
+          "enum": [
+            "confirmed",
+            "needs_confirmation"
+          ]
+        },
+        "provenance": {
+          "$ref": "#/definitions/provenance"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "param": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "unit",
+        "provenance"
+      ],
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/definitions/provenance"
+        }
+      }
+    },
+    "cycleModel": {
+      "description": "How the cycle time of this equipment is computed for the reference part. The result is only as trustworthy as the weakest parameter it uses.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "params"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "laser",
+            "press_brake",
+            "deburring",
+            "washer",
+            "machining",
+            "welding",
+            "inspection",
+            "marking",
+            "packing"
+          ]
+        },
+        "params": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/param"
+          }
+        }
+      }
+    }
+  }
+}

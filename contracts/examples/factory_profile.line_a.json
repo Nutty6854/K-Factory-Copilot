@@ -1,0 +1,2773 @@
+{
+  "schema_version": "0.1",
+  "reference_part": "bracket_b01",
+  "shared_systems": {
+    "cooling_line_1": {
+      "name_ko": "냉각라인1",
+      "kind": "cooling_line"
+    },
+    "power_zone_a": {
+      "name_ko": "전원반 A",
+      "kind": "power_zone"
+    }
+  },
+  "parts": [
+    {
+      "id": "bracket_b01",
+      "name_ko": "브래킷 B-01 (L형, 3 mm 연강)",
+      "material": "mild steel",
+      "thickness_mm": 3,
+      "blank_mm": {
+        "l": 200,
+        "w": 120
+      },
+      "cut_length_m": 0.69,
+      "pierces": 3,
+      "holes": 2,
+      "hole_depth_mm": 3,
+      "bends": 2,
+      "length_m": 0.2,
+      "seam_length_m": 0.06,
+      "seams": 1,
+      "parts_per_box": 50,
+      "provenance": {
+        "confidence": "assumed",
+        "note": "가상의 대표 부품. 외곽 200×120 mm(둘레 0.64 m) + Ø8 구멍 2개(둘레 0.05 m) = 절단 길이 0.69 m. 실제 부품 도면으로 교체 필요."
+      }
+    }
+  ],
+  "factory": {
+    "id": "k_factory_demo",
+    "name": "K-Factory 데모 공장",
+    "line_id": "line_a",
+    "line_name_ko": "라인 A",
+    "industry": "자동차 부품(브래킷류) 가공·용접 라인 (가정)",
+    "description": "업종과 물량은 설계 변수이며 실제 공장 데이터가 아니다. 핵심 설비 7종의 치수는 제조사 제원을 참조한다(출처 표시 참고).",
+    "building_m": {
+      "w": 58,
+      "d": 18
+    },
+    "utility_strip_depth_m": 3.4
+  },
+  "assumptions": {
+    "annual_volume_units": 500000,
+    "working_days_per_year": 250,
+    "shifts_per_day": 2,
+    "productive_hours_per_shift": 7.5,
+    "oee": 0.85,
+    "max_utilization": 0.85,
+    "notes": "모두 가정. 연 8만 개 이상이라는 워털루대 사례(waterloo)만 공개 자료로 확인한 하한 규모이다. 사이클 타임은 제조사가 공개하지 않아 대표 부품(parts)과 공정 변수(cycle_model)로 계산하며, 변수 대부분은 가정이다."
+  },
+  "sources": [
+    {
+      "id": "trumpf_3030",
+      "title": "TRUMPF TruLaser 3030 fiber — product page, technical data table",
+      "url": "https://www.trumpf.com/en_US/products/machines-systems/2d-laser-cutting-machines/trulaser-3030-fiber-3040-fiber-3060-fiber-3080-fiber/",
+      "accessed": "2026-10-08",
+      "note": "페이지를 직접 열어 읽음. 치수에 팔레트 체인저가 포함되는지는 페이지에 없음."
+    },
+    {
+      "id": "trumpf_trubend",
+      "title": "TRUMPF TruBend Series 5000 — technical data table (5130)",
+      "url": "https://www.trumpf.com/en_IN/products/machines-systems/bending-machines/trubend-series-5000/",
+      "accessed": "2026-10-08",
+      "note": "페이지를 직접 열어 읽음."
+    },
+    {
+      "id": "arku_eb1000",
+      "title": "ARKU EdgeBreaker 1000 — product page, technical data",
+      "url": "https://arku.com/en/deburring-machines/laser-cut-and-punched-parts/edgebreaker-1000",
+      "accessed": "2026-10-08",
+      "note": "페이지를 직접 열어 읽음. 치수는 'approx.'로 표기됨. 이송 속도·소비전력은 페이지에 없음."
+    },
+    {
+      "id": "zeiss_scanbox5",
+      "title": "ZEISS ScanBox Series 5 — technical information table (5110/5120/5130)",
+      "url": "https://www.zeiss.com/metrology/us/systems/optical-3d/automated-solutions/scanbox/zeiss-scanbox-series-5.html",
+      "accessed": "2026-10-08",
+      "note": "페이지를 직접 열어 읽음. 1회 측정 사이클 타임은 공개되지 않음."
+    },
+    {
+      "id": "ksn_400wrd",
+      "title": "KSN Industri 400 WRD conveyor washer — dealer listing (Exapro)",
+      "url": "https://www.exapro.com/ksn-industri-as-400-wrd-p260918049",
+      "accessed": "2026-10-08",
+      "note": "딜러 리스팅. 제조사 데이터시트는 못 찾음. 판매자도 수치가 참고용이라고 명시."
+    },
+    {
+      "id": "robodk_2600id",
+      "title": "ABB IRB 2600ID-15/1.85 — RoboDK robot library (payload, reach, weight)",
+      "url": "https://robodk.com/robot/ABB/IRB-2600ID-15-1-85",
+      "accessed": "2026-10-08",
+      "note": "집계 사이트를 직접 읽음(15 kg / 1850 mm / 276 kg). ABB 공식 페이지는 열리지 않음."
+    },
+    {
+      "id": "abb_2600id_cn",
+      "title": "ABB IRB 2600ID datasheet (Chinese) — base width 511 mm",
+      "url": "https://library.e.abb.com/public/af25dc3727b947a7a1179eaa49001df3/IRB_2600ID_Datasheet_CN_RevA.pdf",
+      "accessed": "2026-10-08",
+      "note": "검색 요약을 거친 값. PDF 원문은 접근 거부(403)로 못 읽음."
+    },
+    {
+      "id": "abb_2600id_ds_us",
+      "title": "ABB IRB 2600ID datasheet (US Letter, 06.2017) — axis ranges and speeds, base 676 x 511 mm, weight",
+      "url": "https://library.e.abb.com/public/c09d70e2b2f040eeb063dfa8a5ebc051/IRB%202600ID_Datasheet_US%20Letter.pdf",
+      "accessed": "2026-10-13",
+      "note": "PDF 본문을 읽음(공식 원문). 15/1.85 도면의 치수 라벨은 숫자만 있고 항목 대응이 없음. 팔 마디 길이는 데이터시트에 없음."
+    },
+    {
+      "id": "lincoln_r450",
+      "title": "Lincoln Electric Power Wave R450 — reseller page (dimensions, weight)",
+      "url": "https://www.robots.com/accessories/lincoln-electric-power-wave-r450-robotic-power-source",
+      "accessed": "2026-10-08",
+      "note": "검색 요약 경유(571×355×630 mm, 68 kg). 원문 페이지는 접근 거부(403)."
+    },
+    {
+      "id": "smc_hrs090",
+      "title": "SMC HRS090 — cooling capacity 9.0 kW air-cooled / 10.5 kW water-cooled; pump, tank built in",
+      "url": "https://elasticsearch.smcpneumatics.com/HRS090-A-20-M.html",
+      "accessed": "2026-10-08",
+      "note": "검색 요약 경유. 해당 모델은 SMC가 구형(legacy)으로 표시."
+    },
+    {
+      "id": "rs_hrs090",
+      "title": "RS datasheet — SMC HRS090-WF-40 (970 x 377 x 1090 mm)",
+      "url": "https://docs.rs-online.com/0dc9/A700000014417377.pdf",
+      "accessed": "2026-10-08",
+      "note": "검색 요약 경유. PDF는 바이너리라 텍스트를 못 읽음. 수냉식 변형의 값."
+    },
+    {
+      "id": "waterloo",
+      "title": "UWaterloo engineering case — Tier 2 supplier, cargo-floor brackets (2 automated welders + press, >=80,000 parts/yr)",
+      "url": "https://uwaterloo.ca/engineering-cases/node/272",
+      "accessed": "2026-10-08"
+    },
+    {
+      "id": "abb_flexarc",
+      "title": "ABB FlexArc — robotic arc welding cell (robot, controller, power source, positioner, torch cleaning, fume hood)",
+      "url": "https://one.robotics.abb.com/Solutions/p/FlexArc_L",
+      "accessed": "2026-10-08"
+    },
+    {
+      "id": "lincoln_cell",
+      "title": "Lincoln Electric — robotic welding system (power source, wire drive, gas delivery, torch maintenance)",
+      "url": "https://ch-delivery.lincolnelectric.com/api/public/content/bd60b6a57bf74268b82b3ce1577eeb7b",
+      "accessed": "2026-10-08"
+    },
+    {
+      "id": "smc_chiller",
+      "title": "SMC — chiller for arc welding (water-cooled torch loop)",
+      "url": "https://www.smcworld.com/products/solutions/en-jp/chiller2",
+      "accessed": "2026-10-08"
+    },
+    {
+      "id": "us7381924",
+      "title": "US7381924 — adaptively cool a welding-type system (coolant circulated through the torch)",
+      "url": "https://patents.google.com/patent/US7381924",
+      "accessed": "2026-10-08"
+    },
+    {
+      "id": "us6935550",
+      "title": "US6935550 — robotic positioner with supply and take-away conveyors",
+      "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/6935550",
+      "accessed": "2026-10-08"
+    },
+    {
+      "id": "trench_patent",
+      "title": "US7975436 — utility trench cover (load-rated covers; pipes and conduit in trenches)",
+      "url": "https://patents.google.com/patent/US7975436",
+      "accessed": "2026-10-08"
+    },
+    {
+      "id": "fume_guide",
+      "title": "OHS Online — welding fume collection considerations (source capture, ducting)",
+      "url": "https://ohsonline.com/articles/2024/03/01/breathing-easy-top-10-welding-fume-collection-considerations.aspx?Page=5",
+      "accessed": "2026-10-08"
+    },
+    {
+      "id": "demo_data",
+      "title": "frontend/web-admin/src/data/demo.ts — demo equipment, cooling line, power zone, sensor baselines",
+      "url": "file://frontend/web-admin/src/data/demo.ts",
+      "accessed": "2026-10-08"
+    },
+    {
+      "id": "trumpf_trumark",
+      "title": "TRUMPF TruMark Station 5000 — product page, technical data",
+      "url": "https://www.trumpf.com/en_IN/products/machines-systems/marking-systems/trumark-station-5000/",
+      "accessed": "2026-10-08",
+      "note": "페이지를 직접 열어 읽음. 마킹 속도는 없고 축 이동 속도만 공개."
+    },
+    {
+      "id": "tregaskiss_tt4",
+      "title": "Tregaskiss TT4 reamer / nozzle cleaning station — spec sheet",
+      "url": "https://www.bernardtregaskiss.com/wp-content/uploads/2021/08/sp-tt4_2.0.pdf",
+      "accessed": "2026-10-08",
+      "note": "검색 요약 경유(349 × 263 × 563 mm, 기본 유닛). PDF는 열리지 않음(404)."
+    },
+    {
+      "id": "mir250",
+      "title": "MiR250 product specifications (reseller-hosted PDF)",
+      "url": "https://www.hartfiel.com/wp-content/uploads/2024/04/MiR250-Specs.pdf",
+      "accessed": "2026-10-08",
+      "note": "검색 요약 경유(800 × 580 × 300 mm, 2025 사양). PDF는 바이너리라 텍스트를 못 읽음."
+    },
+    {
+      "id": "epal_pallet",
+      "title": "EUR/EPAL pallet standard size 1200 x 800 x 144 mm (multiple guides)",
+      "url": "https://www.icontainers.com/help/euro-pallet-epal-sizes-specifications",
+      "accessed": "2026-10-08",
+      "note": "여러 안내 자료가 일치하는 표준 규격."
+    },
+    {
+      "id": "abb_positioners",
+      "title": "ABB positioner brochure — IRBP A: 250/500/750 kg payload options",
+      "url": "https://library.e.abb.com/public/7d461dacc632ca98c125734b0035ebf6/ABB%20Positioners.pdf",
+      "accessed": "2026-10-08",
+      "note": "치수 도면은 접근하지 못함."
+    }
+  ],
+  "catalog": {
+    "raw_rack": {
+      "name_ko": "자재 랙",
+      "category": "storage",
+      "footprint_m": {
+        "w": 3.6,
+        "d": 2.4,
+        "h": 1.6
+      },
+      "spec_notes": [
+        "EUR/EPAL 팔레트 1200 × 800 × 144 mm"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "assumed",
+          "source_ids": [
+            "epal_pallet"
+          ],
+          "note": "EUR 팔레트 1200×800 mm의 3×3 배열(9장)로 가정. 팔레트 규격은 표준이나 배열은 가정."
+        }
+      }
+    },
+    "stock": {
+      "name_ko": "적치 구역",
+      "category": "storage",
+      "footprint_m": {
+        "w": 2.4,
+        "d": 1.6,
+        "h": 1.2
+      },
+      "spec_notes": [
+        "EUR/EPAL 팔레트 1200 × 800 × 144 mm"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "assumed",
+          "source_ids": [
+            "epal_pallet"
+          ],
+          "note": "EUR 팔레트 1200×800 mm의 2×2 배열(4장)로 가정."
+        }
+      }
+    },
+    "laser_cutter": {
+      "name_ko": "레이저 절단기",
+      "category": "process",
+      "footprint_m": {
+        "w": 9.229,
+        "d": 6.145,
+        "h": 2.2
+      },
+      "model": "TRUMPF TruLaser 3030 fiber",
+      "spec_notes": [
+        "작업 영역 X 3000 mm × Y 1500 mm",
+        "기본 기계 중량 11,700 kg",
+        "동시 속도 170 m/min (이동 속도이며 절단 속도 아님)"
+      ],
+      "consumes": [
+        "power",
+        "cooling"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "sourced",
+          "source_ids": [
+            "trumpf_3030"
+          ],
+          "note": "길이 9229 × 폭 6145 × 높이 2200 mm. 팔레트 체인저 포함 여부 불명."
+        },
+        "consumes": {
+          "confidence": "assumed",
+          "note": "고출력 레이저는 별도 칠러가 일반적이라는 일반 지식. 확인 필요."
+        }
+      },
+      "cycle_model": {
+        "kind": "laser",
+        "params": {
+          "sheet_l_mm": {
+            "value": 3000,
+            "unit": "mm",
+            "provenance": {
+              "confidence": "sourced",
+              "source_ids": [
+                "trumpf_3030"
+              ],
+              "note": "작업 영역 X 3000 mm(판 길이를 이 값으로 가정)"
+            }
+          },
+          "sheet_w_mm": {
+            "value": 1500,
+            "unit": "mm",
+            "provenance": {
+              "confidence": "sourced",
+              "source_ids": [
+                "trumpf_3030"
+              ],
+              "note": "작업 영역 Y 1500 mm"
+            }
+          },
+          "margin_mm": {
+            "value": 10,
+            "unit": "mm",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "부품 사이 간격. 네스팅 가정."
+            }
+          },
+          "cut_speed_m_min": {
+            "value": 12,
+            "unit": "m/min",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "3 mm 연강 공개 범위 8~22 m/min(출력별) 안의 값. 검색 요약이라 출처 URL 미특정. TRUMPF 절단 파라미터 표로 대체 필요."
+            }
+          },
+          "pierce_s": {
+            "value": 0.5,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "얇은 판 피어싱은 수백 ms라는 특허 설명(검색 요약). 3 mm 값은 못 찾음."
+            }
+          },
+          "rapid_s_per_contour": {
+            "value": 0.3,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "윤곽 간 이동·가감속 가정."
+            }
+          },
+          "sheet_change_s": {
+            "value": 40,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "팔레트 교체 가정."
+            }
+          }
+        }
+      }
+    },
+    "press_brake": {
+      "name_ko": "프레스 브레이크",
+      "category": "process",
+      "footprint_m": {
+        "w": 3.98,
+        "d": 1.9,
+        "h": 2.84
+      },
+      "model": "TRUMPF TruBend 5130",
+      "spec_notes": [
+        "프레스 힘 1300 kN, 벤딩 길이 3230 mm, 기둥 간격 2690 mm",
+        "Y축 최대 속도 25 mm/s (프레스 동작, 옵션)"
+      ],
+      "consumes": [
+        "power",
+        "air"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "sourced",
+          "source_ids": [
+            "trumpf_trubend"
+          ],
+          "note": "길이 3980 × 폭 1900 × 높이 2840 mm, 11,800 kg"
+        }
+      },
+      "cycle_model": {
+        "kind": "press_brake",
+        "params": {
+          "stroke_mm": {
+            "value": 12,
+            "unit": "mm",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "3 mm 판 벤딩 시 램이 하강해 굽히는 구간 가정."
+            }
+          },
+          "y_speed_mm_s": {
+            "value": 25,
+            "unit": "mm/s",
+            "provenance": {
+              "confidence": "sourced",
+              "source_ids": [
+                "trumpf_trubend"
+              ],
+              "note": "Y축 최대 속도, 프레스 동작(옵션)"
+            }
+          },
+          "approach_return_s": {
+            "value": 1.0,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "빠른 접근·복귀 가정."
+            }
+          },
+          "handling_s_per_bend": {
+            "value": 6,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "뒤집기·재위치 5~8초(검색 요약, 출처 URL 미특정)의 값."
+            }
+          },
+          "load_unload_s": {
+            "value": 8,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "투입·배출 가정."
+            }
+          }
+        }
+      }
+    },
+    "deburring": {
+      "name_ko": "디버링",
+      "category": "process",
+      "footprint_m": {
+        "w": 2.1,
+        "d": 2.6,
+        "h": 2.1
+      },
+      "model": "ARKU EdgeBreaker 1000",
+      "spec_notes": [
+        "단면 건식, 소형 레이저·펀칭 부품용",
+        "소재 두께 0.5~25 mm, 통과 폭 최대 250 mm"
+      ],
+      "consumes": [
+        "power"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "sourced",
+          "source_ids": [
+            "arku_eb1000"
+          ],
+          "note": "약 2100 × 2600 × 2100 mm(공식 'approx.'), 약 3,500 kg"
+        }
+      },
+      "cycle_model": {
+        "kind": "deburring",
+        "params": {
+          "feed_m_min": {
+            "value": 3,
+            "unit": "m/min",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "ARKU EdgeBreaker 4000 딜러 리스팅의 0.2~6 m/min 범위 중간. EdgeBreaker 1000 공식 페이지에는 속도 없음."
+            }
+          },
+          "handling_s": {
+            "value": 6,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "투입·배출 가정."
+            }
+          }
+        }
+      }
+    },
+    "washer_dryer": {
+      "name_ko": "세척·건조",
+      "category": "process",
+      "footprint_m": {
+        "w": 4.64,
+        "d": 1.39,
+        "h": 1.665
+      },
+      "model": "KSN Industri 400 WRD",
+      "spec_notes": [
+        "벨트 폭 400 mm, 최대 제품 길이 800 mm",
+        "가열 18 kW, 탱크 300 L (딜러 리스팅)"
+      ],
+      "consumes": [
+        "power",
+        "air"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "secondary",
+          "source_ids": [
+            "ksn_400wrd"
+          ],
+          "note": "4640 × 1390 × 1665 mm. 딜러 리스팅이며 제조사 데이터시트 미확인."
+        }
+      },
+      "cycle_model": {
+        "kind": "washer",
+        "params": {
+          "belt_m_min": {
+            "value": 1.0,
+            "unit": "m/min",
+            "provenance": {
+              "confidence": "assumed",
+              "source_ids": [
+                "ksn_400wrd"
+              ],
+              "note": "KSN 400 WRD 0.3~1.7 m/min(딜러 리스팅) 범위의 중간."
+            }
+          },
+          "pitch_m": {
+            "value": 0.3,
+            "unit": "m",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "벨트 위 부품 간격 가정(1차선)."
+            }
+          }
+        }
+      }
+    },
+    "robot_arm": {
+      "name_ko": "6축 로봇",
+      "category": "robot",
+      "footprint_m": {
+        "w": 0.676,
+        "d": 0.511,
+        "h": 1.9
+      },
+      "model": "ABB IRB 2600ID-15/1.85",
+      "spec_notes": [
+        "[공식 데이터시트 원문] 적재 15 kg(팔 부하 10 kg), 도달 1850 mm, 중량 273~276 kg(두 변형 합산 표기), 설치: 바닥·벽·선반·경사·거꾸로",
+        "[공식 데이터시트 원문] 베이스 676 × 511 mm. 축 범위 J1 ±180°, J2 +155/−95°, J3 +75/−180°, J4 ±175°, J5 ±120°, J6 ±400°. 축 속도 175/175/175/360/360/500 °/s",
+        "[2차: RoboDK 집계] 반복 정밀도 0.026 mm",
+        "[가정] 팔 마디 길이(하부 0.9 m, 전완 약 0.8 m, 어깨 오프셋 0.15 m)는 표준 IRB 2600의 ROS-Industrial 정의(Apache-2.0)에서 가져온 추정이며 ID형 값은 확인하지 못함. 도달 1.85 m와는 맞음",
+        "[가정] 높이 1.9 m와 받침대(0.82 m, 높이 0.3 m)는 우리 선택. 외형은 단순화한 예시 모양"
+      ],
+      "shape": "robot",
+      "reach_m": 1.85,
+      "consumes": [
+        "power",
+        "air",
+        "signal"
+      ],
+      "sensors": [
+        {
+          "key": "vibration",
+          "unit": "mm/s",
+          "baseline": 2.1
+        },
+        {
+          "key": "current",
+          "unit": "A",
+          "baseline": 12.8
+        },
+        {
+          "key": "temperature",
+          "unit": "°C",
+          "baseline": 48.0
+        }
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "secondary",
+          "source_ids": [
+            "abb_2600id_ds_us",
+            "abb_2600id_cn",
+            "robodk_2600id"
+          ],
+          "note": "베이스 676 × 511 mm는 ABB 영문 데이터시트 원문에서 확인(w·d). 높이 1.9 m는 가정."
+        }
+      }
+    },
+    "robot_controller": {
+      "name_ko": "로봇 제어기",
+      "category": "control",
+      "footprint_m": {
+        "w": 0.9,
+        "d": 0.6,
+        "h": 1.8
+      },
+      "consumes": [
+        "power"
+      ],
+      "provides": [
+        "bundle"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "assumed",
+          "note": "가정 치수. 제조사 제원을 아직 못 찾음."
+        },
+        "consumes": {
+          "confidence": "sourced",
+          "source_ids": [
+            "abb_flexarc"
+          ],
+          "note": "로봇 + 컨트롤러 구성. 구동 전원·신호는 제어기에서 한 묶음 케이블로 간다."
+        }
+      },
+      "spec_notes": [
+        "ABB OmniCore C30은 슬림형(데스크톱·19인치 랙)이라는 안내만 확인, 치수는 공식 자료에서 못 찾음"
+      ]
+    },
+    "fixture": {
+      "name_ko": "위치결정 지그",
+      "category": "process",
+      "footprint_m": {
+        "w": 1.8,
+        "d": 1.2,
+        "h": 0.3
+      },
+      "provenance": {
+        "footprint_m": {
+          "confidence": "assumed",
+          "note": "가정 치수. 제조사 제원을 아직 못 찾음."
+        }
+      }
+    },
+    "positioner_2station": {
+      "name_ko": "2스테이션 포지셔너",
+      "category": "process",
+      "footprint_m": {
+        "w": 2.4,
+        "d": 1.2,
+        "h": 1.0
+      },
+      "consumes": [
+        "power"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "assumed",
+          "note": "가정 치수. 제조사 제원을 아직 못 찾음."
+        },
+        "consumes": {
+          "confidence": "sourced",
+          "source_ids": [
+            "abb_flexarc",
+            "us6935550"
+          ],
+          "note": "용접 셀의 포지셔너 구성"
+        }
+      },
+      "spec_notes": [
+        "ABB IRBP A: 1·2스테이션, 적재 250/500/750 kg 옵션(abb_positioners)",
+        "치수 도면은 접근하지 못해 풋프린트는 가정"
+      ]
+    },
+    "weld_power_source": {
+      "name_ko": "용접 전원",
+      "category": "process",
+      "footprint_m": {
+        "w": 0.571,
+        "d": 0.355,
+        "h": 0.63
+      },
+      "model": "Lincoln Electric Power Wave R450",
+      "spec_notes": [
+        "정격 출력 450 A / 36.5 V (100% 듀티)",
+        "와이어 피더는 로봇 팔에 장착되는 구성이 일반적이라 별도 배치하지 않음(가정)"
+      ],
+      "consumes": [
+        "power",
+        "cooling",
+        "gas"
+      ],
+      "provides": [
+        "bundle"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "secondary",
+          "source_ids": [
+            "lincoln_r450"
+          ],
+          "note": "571 × 355 × 630 mm, 68 kg. 재판매 페이지 요약 경유."
+        },
+        "consumes": {
+          "confidence": "sourced",
+          "source_ids": [
+            "smc_chiller",
+            "lincoln_cell",
+            "us7381924"
+          ],
+          "note": "수냉 토치는 칠러로 냉각하고 가스·전원과 한 묶음 케이블로 토치에 공급"
+        }
+      }
+    },
+    "torch_cleaner": {
+      "name_ko": "토치 클리너",
+      "category": "process",
+      "footprint_m": {
+        "w": 0.349,
+        "d": 0.263,
+        "h": 0.563
+      },
+      "model": "Tregaskiss TT4",
+      "spec_notes": [
+        "노즐 외경·와이어 지름에 맞는 V블록·커터 선택",
+        "Lincoln Power Ream II는 치수를 못 찾음"
+      ],
+      "consumes": [
+        "power",
+        "air"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "secondary",
+          "source_ids": [
+            "tregaskiss_tt4"
+          ],
+          "note": "기본 유닛 349 × 263 × 563 mm, 약 18.6 kg. 스탠드(높이 18~36인치)는 별도라 높이는 유닛 기준."
+        }
+      }
+    },
+    "fume_hood": {
+      "name_ko": "흄 후드",
+      "category": "process",
+      "footprint_m": {
+        "w": 2.8,
+        "d": 1.7,
+        "h": 0.5
+      },
+      "consumes": [
+        "exhaust"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "assumed",
+          "note": "가정 치수. 제조사 제원을 아직 못 찾음."
+        }
+      }
+    },
+    "inspection_station": {
+      "name_ko": "최종 검사",
+      "category": "process",
+      "footprint_m": {
+        "w": 2.2,
+        "d": 2.85,
+        "h": 3.05
+      },
+      "model": "ZEISS ScanBox 5110 (door)",
+      "spec_notes": [
+        "최대 부품 Ø1000 mm, 2000 kg",
+        "전원 200–500 V 3상 16 A"
+      ],
+      "consumes": [
+        "power"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "sourced",
+          "source_ids": [
+            "zeiss_scanbox5"
+          ],
+          "note": "문 방식 2200 × 2850 × 3050 mm (라이트 커튼 방식은 2200 × 3550 × 3050 mm)"
+        }
+      },
+      "cycle_model": {
+        "kind": "inspection",
+        "params": {
+          "views": {
+            "value": 8,
+            "unit": "회",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "시점 수 가정."
+            }
+          },
+          "move_s": {
+            "value": 1.5,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "회전 테이블·로봇 이동 가정."
+            }
+          },
+          "scan_s": {
+            "value": 3,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "source_ids": [
+                "zeiss_scanbox5"
+              ],
+              "note": "스캔당 수초(ZEISS ATOS 센서, 검색 요약)."
+            }
+          },
+          "analysis_s": {
+            "value": 3,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "가정."
+            }
+          },
+          "load_unload_s": {
+            "value": 10,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "문 방식 투입·배출 가정."
+            }
+          },
+          "sampling_rate": {
+            "value": 0.1,
+            "unit": "-",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "전수가 아니라 10개당 1개 샘플 검사 가정. 3D 스캔 전수 검사는 택트를 못 맞춤."
+            }
+          }
+        }
+      }
+    },
+    "laser_marker": {
+      "name_ko": "마킹",
+      "category": "process",
+      "footprint_m": {
+        "w": 0.86,
+        "d": 1.31,
+        "h": 2.0
+      },
+      "model": "TRUMPF TruMark Station 5000",
+      "spec_notes": [
+        "최대 부품 680 × 500 × 700 mm",
+        "축 이동 Z 500 / X 300 / Y 300 mm, 속도 Z 1.5 m/min, X·Y 6 m/min",
+        "레이저 클래스 1"
+      ],
+      "consumes": [
+        "power"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "sourced",
+          "source_ids": [
+            "trumpf_trumark"
+          ],
+          "note": "작업대 W860 × H2000 × D1310 mm"
+        }
+      },
+      "cycle_model": {
+        "kind": "marking",
+        "params": {
+          "mark_s": {
+            "value": 3,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "마킹 속도가 TRUMPF 페이지에 없음. 가정."
+            }
+          },
+          "handling_s": {
+            "value": 3,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "가정."
+            }
+          }
+        }
+      }
+    },
+    "packing_station": {
+      "name_ko": "포장·출하",
+      "category": "process",
+      "footprint_m": {
+        "w": 2.4,
+        "d": 2.8,
+        "h": 1.2
+      },
+      "consumes": [
+        "power",
+        "air"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "assumed",
+          "note": "가정 치수. 제조사 제원을 아직 못 찾음."
+        }
+      },
+      "cycle_model": {
+        "kind": "packing",
+        "params": {
+          "pick_place_s": {
+            "value": 5,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "수동 포장 가정."
+            }
+          },
+          "box_change_s": {
+            "value": 60,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "상자 교체 가정."
+            }
+          }
+        }
+      }
+    },
+    "reject_bin": {
+      "name_ko": "불량 격리",
+      "category": "storage",
+      "footprint_m": {
+        "w": 1.6,
+        "d": 1.0,
+        "h": 1.0
+      },
+      "provenance": {
+        "footprint_m": {
+          "confidence": "assumed",
+          "note": "가정 치수. 제조사 제원을 아직 못 찾음."
+        }
+      }
+    },
+    "agv": {
+      "name_ko": "AGV",
+      "category": "logistics",
+      "footprint_m": {
+        "w": 0.8,
+        "d": 0.58,
+        "h": 0.3
+      },
+      "model": "MiR250",
+      "spec_notes": [
+        "적재 250 kg, 최고 속도 2.0 m/s(무부하 평지)",
+        "개정판마다 중량이 83~97 kg으로 다름"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "secondary",
+          "source_ids": [
+            "mir250"
+          ],
+          "note": "800 × 580 × 300 mm(2025 사양, 검색 요약 경유)."
+        }
+      }
+    },
+    "conveyor": {
+      "name_ko": "컨베이어",
+      "category": "logistics",
+      "footprint_m": {
+        "w": 1.0,
+        "d": 0.56,
+        "h": 0.715
+      },
+      "provenance": {
+        "footprint_m": {
+          "confidence": "assumed",
+          "note": "가정 치수. 제조사 제원을 아직 못 찾음. 높이 0.715는 벨트 윗면을 라인 공통 높이 0.68 m에 맞춘 값."
+        }
+      }
+    },
+    "power_panel": {
+      "name_ko": "전원반",
+      "category": "utility",
+      "footprint_m": {
+        "w": 3.4,
+        "d": 2.1,
+        "h": 2.0
+      },
+      "provides": [
+        "power"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "assumed",
+          "note": "가정 치수. 제조사 제원을 아직 못 찾음."
+        }
+      },
+      "spec_notes": [
+        "Siemens SIVACON S8: 섹션 높이 2000/2200 mm(매뉴얼)만 확인, 폭·깊이는 못 찾음"
+      ]
+    },
+    "compressor": {
+      "name_ko": "컴프레서",
+      "category": "utility",
+      "footprint_m": {
+        "w": 2.2,
+        "d": 2.2,
+        "h": 1.8
+      },
+      "consumes": [
+        "power"
+      ],
+      "provides": [
+        "air"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "assumed",
+          "note": "가정 치수. 제조사 제원을 아직 못 찾음."
+        }
+      },
+      "spec_notes": [
+        "Atlas Copco GA 37 VSD+ 치수가 자료마다 다름(약 1.7×0.9×1.6 m ~ 2.3 m 길이) — 공식 시트 없이는 채택하지 않음"
+      ]
+    },
+    "air_dryer": {
+      "name_ko": "에어 드라이어",
+      "category": "utility",
+      "footprint_m": {
+        "w": 1.2,
+        "d": 2.2,
+        "h": 1.6
+      },
+      "consumes": [
+        "power",
+        "air"
+      ],
+      "provides": [
+        "air"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "assumed",
+          "note": "가정 치수. 제조사 제원을 아직 못 찾음."
+        }
+      }
+    },
+    "air_receiver": {
+      "name_ko": "에어 탱크",
+      "category": "utility",
+      "footprint_m": {
+        "w": 1.9,
+        "d": 2.1,
+        "h": 2.0
+      },
+      "shape": "ellipse",
+      "consumes": [
+        "air"
+      ],
+      "provides": [
+        "air"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "assumed",
+          "note": "가정 치수. 제조사 제원을 아직 못 찾음."
+        }
+      }
+    },
+    "chiller": {
+      "name_ko": "칠러",
+      "category": "utility",
+      "footprint_m": {
+        "w": 0.377,
+        "d": 0.97,
+        "h": 1.09
+      },
+      "model": "SMC HRS090",
+      "spec_notes": [
+        "냉각 능력 9.0 kW(공랭) / 10.5 kW(수냉), 온도 안정도 ±0.5 °C, 설정 5~35 °C",
+        "펌프·탱크 내장(SMC 안내) — 별도 탱크 설비 없음"
+      ],
+      "consumes": [
+        "power"
+      ],
+      "provides": [
+        "cooling"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "secondary",
+          "source_ids": [
+            "rs_hrs090",
+            "smc_hrs090"
+          ],
+          "note": "D970 × W377 × H1090 mm는 수냉식 변형(RS 데이터시트, 검색 요약 경유). 공랭식 치수는 못 찾음."
+        }
+      }
+    },
+    "gas_manifold": {
+      "name_ko": "가스 매니폴드",
+      "category": "utility",
+      "footprint_m": {
+        "w": 2.4,
+        "d": 2.0,
+        "h": 1.8
+      },
+      "provides": [
+        "gas"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "assumed",
+          "note": "가정 치수. 제조사 제원을 아직 못 찾음."
+        }
+      }
+    },
+    "dust_collector": {
+      "name_ko": "집진기",
+      "category": "utility",
+      "footprint_m": {
+        "w": 2.4,
+        "d": 2.1,
+        "h": 3.0
+      },
+      "consumes": [
+        "power"
+      ],
+      "provides": [
+        "exhaust"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "assumed",
+          "note": "가정 치수. 제조사 제원을 아직 못 찾음."
+        }
+      }
+    },
+    "control_room": {
+      "name_ko": "제어실",
+      "category": "control",
+      "footprint_m": {
+        "w": 5.2,
+        "d": 2.2,
+        "h": 3.0
+      },
+      "consumes": [
+        "power"
+      ],
+      "provenance": {
+        "footprint_m": {
+          "confidence": "assumed",
+          "note": "가정 치수. 제조사 제원을 아직 못 찾음."
+        }
+      }
+    }
+  },
+  "equipment": [
+    {
+      "id": "raw_rack_01",
+      "type": "raw_rack",
+      "position_m": {
+        "x": 2.5,
+        "y": 8.0
+      },
+      "label": {
+        "title": "자재 랙",
+        "sub": "판재 · 지게차 투입"
+      },
+      "process_step": "infeed"
+    },
+    {
+      "id": "laser_01",
+      "type": "laser_cutter",
+      "position_m": {
+        "x": 10.615,
+        "y": 8.0
+      },
+      "label": {
+        "title": "레이저 절단기",
+        "sub": "블랭킹 · 로딩/언로딩"
+      },
+      "process_step": "blanking",
+      "shared_systems": {
+        "power_zone": "power_zone_a"
+      }
+    },
+    {
+      "id": "press_01",
+      "type": "press_brake",
+      "position_m": {
+        "x": 19.19,
+        "y": 6.2
+      },
+      "label": {
+        "title": "프레스 브레이크 1",
+        "sub": "벤딩"
+      },
+      "process_step": "bending",
+      "shared_systems": {
+        "power_zone": "power_zone_a"
+      }
+    },
+    {
+      "id": "press_02",
+      "type": "press_brake",
+      "position_m": {
+        "x": 19.19,
+        "y": 10.6
+      },
+      "label": {
+        "title": "프레스 브레이크 2",
+        "sub": "벤딩"
+      },
+      "process_step": "bending",
+      "shared_systems": {
+        "power_zone": "power_zone_a"
+      }
+    },
+    {
+      "id": "deburr_01",
+      "type": "deburring",
+      "position_m": {
+        "x": 24.25,
+        "y": 8.0
+      },
+      "label": {
+        "title": "디버링"
+      },
+      "process_step": "deburring",
+      "shared_systems": {
+        "power_zone": "power_zone_a"
+      }
+    },
+    {
+      "id": "conveyor_link",
+      "type": "conveyor",
+      "position_m": {
+        "x": 26.3,
+        "y": 8.0
+      },
+      "label": {
+        "title": ""
+      },
+      "footprint_m": {
+        "w": 2.0,
+        "d": 0.56
+      }
+    },
+    {
+      "id": "washer_01",
+      "type": "washer_dryer",
+      "position_m": {
+        "x": 29.62,
+        "y": 8.0
+      },
+      "label": {
+        "title": "세척 · 건조",
+        "sub": "인라인"
+      },
+      "process_step": "washing",
+      "shared_systems": {
+        "power_zone": "power_zone_a"
+      }
+    },
+    {
+      "id": "conveyor_main",
+      "type": "conveyor",
+      "position_m": {
+        "x": 42.67,
+        "y": 8.0
+      },
+      "label": {
+        "title": ""
+      },
+      "footprint_m": {
+        "w": 21.46,
+        "d": 0.56
+      }
+    },
+    {
+      "id": "robot_01",
+      "type": "robot_arm",
+      "position_m": {
+        "x": 33.4,
+        "y": 6.2
+      },
+      "label": {
+        "title": "Robot 01",
+        "sub": "가공"
+      },
+      "name_ko": "로봇 01",
+      "role_short": "가공",
+      "role": "가공",
+      "process_step": "machining",
+      "shared_systems": {
+        "cooling_line": "cooling_line_1",
+        "power_zone": "power_zone_a"
+      },
+      "demo_id": "robot_01",
+      "cycle_model": {
+        "kind": "machining",
+        "params": {
+          "approach_s": {
+            "value": 1.5,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "가정."
+            }
+          },
+          "hole_approach_s": {
+            "value": 1.0,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "가정."
+            }
+          },
+          "hole_retract_s": {
+            "value": 1.0,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "가정."
+            }
+          },
+          "spindle_rpm": {
+            "value": 8000,
+            "unit": "rpm",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "3D 시뮬레이션과 같은 가정값."
+            }
+          },
+          "feed_mm_rev": {
+            "value": 0.08,
+            "unit": "mm/rev",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "3 mm 판 드릴링 가정."
+            }
+          },
+          "move_s": {
+            "value": 0.5,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "가정."
+            }
+          },
+          "return_s": {
+            "value": 1.0,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "가정."
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "ctrl_01",
+      "type": "robot_controller",
+      "position_m": {
+        "x": 33.4,
+        "y": 5.0
+      },
+      "label": {
+        "title": "제어기"
+      },
+      "shared_systems": {
+        "power_zone": "power_zone_a"
+      }
+    },
+    {
+      "id": "robot_02",
+      "type": "robot_arm",
+      "position_m": {
+        "x": 36.8,
+        "y": 6.2
+      },
+      "label": {
+        "title": "Robot 02",
+        "sub": "검사 (비전)"
+      },
+      "name_ko": "로봇 02",
+      "role_short": "검사",
+      "role": "검사 (비전)",
+      "process_step": "inspection_inprocess",
+      "shared_systems": {
+        "cooling_line": "cooling_line_1",
+        "power_zone": "power_zone_a"
+      },
+      "demo_id": "robot_02",
+      "cycle_model": {
+        "kind": "inspection",
+        "params": {
+          "views": {
+            "value": 3,
+            "unit": "회",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "가정."
+            }
+          },
+          "move_s": {
+            "value": 1.0,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "가정."
+            }
+          },
+          "scan_s": {
+            "value": 1.5,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "가정."
+            }
+          },
+          "analysis_s": {
+            "value": 1.0,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "가정."
+            }
+          },
+          "load_unload_s": {
+            "value": 0,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "컨베이어 인라인이라 0."
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "ctrl_02",
+      "type": "robot_controller",
+      "position_m": {
+        "x": 36.8,
+        "y": 5.0
+      },
+      "label": {
+        "title": "제어기"
+      },
+      "shared_systems": {
+        "power_zone": "power_zone_a"
+      }
+    },
+    {
+      "id": "robot_03",
+      "type": "robot_arm",
+      "position_m": {
+        "x": 39.55,
+        "y": 6.2
+      },
+      "label": {
+        "title": "Robot 03",
+        "sub": "아크 용접"
+      },
+      "name_ko": "로봇 03",
+      "role_short": "용접",
+      "role": "아크 용접",
+      "process_step": "welding",
+      "shared_systems": {
+        "cooling_line": "cooling_line_1",
+        "power_zone": "power_zone_a"
+      },
+      "demo_id": "robot_03",
+      "cycle_model": {
+        "kind": "welding",
+        "params": {
+          "approach_s": {
+            "value": 1.5,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "가정."
+            }
+          },
+          "retract_s": {
+            "value": 1.0,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "가정."
+            }
+          },
+          "travel_m_min": {
+            "value": 1.2,
+            "unit": "m/min",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "얇은 강판 필렛 이송 속도 250~1,800 mm/min, 생산 평균 약 1,100~1,300 mm/min(검색 요약: AWS 포럼, AGT BeamMaster 사양 등). 출처 URL 미특정."
+            }
+          },
+          "load_unload_s": {
+            "value": 12,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "2스테이션 포지셔너에서 작업자 투입 가정(로봇과 병행)."
+            }
+          },
+          "index_s": {
+            "value": 2.0,
+            "unit": "s",
+            "provenance": {
+              "confidence": "assumed",
+              "note": "포지셔너 회전 가정."
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "ctrl_03",
+      "type": "robot_controller",
+      "position_m": {
+        "x": 39.55,
+        "y": 5.0
+      },
+      "label": {
+        "title": "제어기"
+      },
+      "shared_systems": {
+        "power_zone": "power_zone_a"
+      }
+    },
+    {
+      "id": "fixture_s1",
+      "type": "fixture",
+      "position_m": {
+        "x": 33.4,
+        "y": 8.0
+      },
+      "label": {
+        "title": "",
+        "below": "S1 가공"
+      }
+    },
+    {
+      "id": "fixture_s2",
+      "type": "fixture",
+      "position_m": {
+        "x": 36.8,
+        "y": 8.0
+      },
+      "label": {
+        "title": "",
+        "below": "S2 검사"
+      }
+    },
+    {
+      "id": "positioner_01",
+      "type": "positioner_2station",
+      "position_m": {
+        "x": 40.2,
+        "y": 8.0
+      },
+      "label": {
+        "title": "",
+        "below": "S3 용접\n2스테이션 포지셔너"
+      },
+      "shared_systems": {
+        "power_zone": "power_zone_a"
+      }
+    },
+    {
+      "id": "fumehood_01",
+      "type": "fume_hood",
+      "position_m": {
+        "x": 40.2,
+        "y": 8.0
+      },
+      "label": {
+        "title": "",
+        "sub": "흄 후드"
+      },
+      "footprint_m": {
+        "w": 2.8,
+        "d": 1.7
+      }
+    },
+    {
+      "id": "weldsrc_01",
+      "type": "weld_power_source",
+      "position_m": {
+        "x": 42.9,
+        "y": 5.4
+      },
+      "label": {
+        "title": "용접 전원"
+      },
+      "shared_systems": {
+        "cooling_line": "cooling_line_1",
+        "power_zone": "power_zone_a"
+      }
+    },
+    {
+      "id": "torchclean_01",
+      "type": "torch_cleaner",
+      "position_m": {
+        "x": 41.7,
+        "y": 5.25
+      },
+      "label": {
+        "title": "토치",
+        "sub": "클리너"
+      },
+      "shared_systems": {
+        "power_zone": "power_zone_a"
+      }
+    },
+    {
+      "id": "inspect_final_01",
+      "type": "inspection_station",
+      "position_m": {
+        "x": 46.2,
+        "y": 8.0
+      },
+      "label": {
+        "title": "최종 검사",
+        "sub": "비전 · 치수"
+      },
+      "process_step": "inspection_final",
+      "shared_systems": {
+        "power_zone": "power_zone_a"
+      }
+    },
+    {
+      "id": "marking_01",
+      "type": "laser_marker",
+      "position_m": {
+        "x": 49.2,
+        "y": 8.0
+      },
+      "label": {
+        "title": "마킹"
+      },
+      "process_step": "marking",
+      "shared_systems": {
+        "power_zone": "power_zone_a"
+      }
+    },
+    {
+      "id": "pack_01",
+      "type": "packing_station",
+      "position_m": {
+        "x": 52.2,
+        "y": 8.0
+      },
+      "label": {
+        "title": "포장 · 출하",
+        "sub": "양품 랙"
+      },
+      "process_step": "packing",
+      "shared_systems": {
+        "power_zone": "power_zone_a"
+      }
+    },
+    {
+      "id": "reject_01",
+      "type": "reject_bin",
+      "position_m": {
+        "x": 46.2,
+        "y": 11.4
+      },
+      "label": {
+        "title": "불량 격리"
+      }
+    },
+    {
+      "id": "agv_01",
+      "type": "agv",
+      "position_m": {
+        "x": 2.5,
+        "y": 10.6
+      },
+      "label": {
+        "title": "AGV 1"
+      }
+    },
+    {
+      "id": "agv_02",
+      "type": "agv",
+      "position_m": {
+        "x": 52.0,
+        "y": 10.85
+      },
+      "label": {
+        "title": "AGV 2"
+      }
+    },
+    {
+      "id": "stock_in_01",
+      "type": "stock",
+      "position_m": {
+        "x": 2.5,
+        "y": 12.1
+      },
+      "label": {
+        "title": "자재 적치"
+      }
+    },
+    {
+      "id": "stock_out_01",
+      "type": "stock",
+      "position_m": {
+        "x": 52.0,
+        "y": 12.1
+      },
+      "label": {
+        "title": "출하 적치"
+      }
+    },
+    {
+      "id": "power_a",
+      "type": "power_panel",
+      "position_m": {
+        "x": 2.5,
+        "y": 1.55
+      },
+      "label": {
+        "title": "전원반 A",
+        "sub": "변압기 · MCC"
+      },
+      "shared_systems": {
+        "power_zone": "power_zone_a"
+      }
+    },
+    {
+      "id": "comp_01",
+      "type": "compressor",
+      "position_m": {
+        "x": 8.1,
+        "y": 1.6
+      },
+      "label": {
+        "title": "컴프레서"
+      },
+      "shared_systems": {
+        "power_zone": "power_zone_a"
+      }
+    },
+    {
+      "id": "dryer_01",
+      "type": "air_dryer",
+      "position_m": {
+        "x": 10.0,
+        "y": 1.6
+      },
+      "label": {
+        "title": "드라이어"
+      },
+      "shared_systems": {
+        "power_zone": "power_zone_a"
+      }
+    },
+    {
+      "id": "receiver_01",
+      "type": "air_receiver",
+      "position_m": {
+        "x": 11.9,
+        "y": 1.6
+      },
+      "label": {
+        "title": "에어 탱크"
+      }
+    },
+    {
+      "id": "chiller_01",
+      "type": "chiller",
+      "position_m": {
+        "x": 17.3,
+        "y": 1.6
+      },
+      "label": {
+        "title": "칠러",
+        "sub": "냉각라인1"
+      },
+      "shared_systems": {
+        "cooling_line": "cooling_line_1",
+        "power_zone": "power_zone_a"
+      }
+    },
+    {
+      "id": "gas_manifold_01",
+      "type": "gas_manifold",
+      "position_m": {
+        "x": 40.0,
+        "y": 1.5
+      },
+      "label": {
+        "title": "가스 매니폴드",
+        "sub": "Ar / CO₂"
+      }
+    },
+    {
+      "id": "collector_01",
+      "type": "dust_collector",
+      "position_m": {
+        "x": 43.6,
+        "y": 1.55
+      },
+      "label": {
+        "title": "집진기",
+        "sub": "흄 컬렉터"
+      },
+      "shared_systems": {
+        "power_zone": "power_zone_a"
+      }
+    },
+    {
+      "id": "control_room_01",
+      "type": "control_room",
+      "position_m": {
+        "x": 52.0,
+        "y": 1.6
+      },
+      "label": {
+        "title": "제어실",
+        "sub": "PLC · SCADA · MES"
+      },
+      "shared_systems": {
+        "power_zone": "power_zone_a"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "id": "bus_power",
+      "net": "power",
+      "kind": "bus",
+      "polyline_m": [
+        [
+          2.5,
+          3.05
+        ],
+        [
+          55.0,
+          3.05
+        ]
+      ],
+      "label": "전원 (전원반 A, 벽면 트레이)"
+    },
+    {
+      "id": "bus_air",
+      "net": "air",
+      "kind": "bus",
+      "polyline_m": [
+        [
+          11.9,
+          3.25
+        ],
+        [
+          55.0,
+          3.25
+        ]
+      ],
+      "label": "압축공기"
+    },
+    {
+      "id": "trench_cool",
+      "net": "cooling",
+      "kind": "trench",
+      "polyline_m": [
+        [
+          10.6,
+          4.2
+        ],
+        [
+          43.2,
+          4.2
+        ]
+      ],
+      "label": "냉각라인1 (바닥 아래 트렌치)"
+    }
+  ],
+  "connections": [
+    {
+      "id": "cool_weld",
+      "net": "cooling",
+      "from": "chiller_01",
+      "to": "weldsrc_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "sourced",
+        "source_ids": [
+          "smc_chiller",
+          "us7381924"
+        ],
+        "note": "수냉 토치 ← 칠러"
+      },
+      "route": "trench_cool",
+      "drop_offset_m": 0.18
+    },
+    {
+      "id": "cool_laser",
+      "net": "cooling",
+      "from": "chiller_01",
+      "to": "laser_01",
+      "status": "needs_confirmation",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "레이저용 칠러가 별도일 수 있음"
+      },
+      "route": "trench_cool",
+      "drop_offset_m": 0.0
+    },
+    {
+      "id": "cool_r1",
+      "net": "cooling",
+      "from": "chiller_01",
+      "to": "robot_01",
+      "status": "needs_confirmation",
+      "provenance": {
+        "confidence": "assumed",
+        "source_ids": [
+          "demo_data"
+        ],
+        "note": "데모 데이터는 냉각라인1이지만 실제 냉각 대상은 미확인"
+      },
+      "route": "trench_cool",
+      "drop_offset_m": 0.9
+    },
+    {
+      "id": "cool_r2",
+      "net": "cooling",
+      "from": "chiller_01",
+      "to": "robot_02",
+      "status": "needs_confirmation",
+      "provenance": {
+        "confidence": "assumed",
+        "source_ids": [
+          "demo_data"
+        ],
+        "note": "데모 데이터는 냉각라인1이지만 실제 냉각 대상은 미확인"
+      },
+      "route": "trench_cool",
+      "drop_offset_m": 0.9
+    },
+    {
+      "id": "bundle_r3",
+      "net": "bundle",
+      "from": "weldsrc_01",
+      "to": "robot_03",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "sourced",
+        "source_ids": [
+          "us7381924"
+        ],
+        "note": "토치 케이블 한 묶음에 냉각수·가스·전류"
+      },
+      "waypoints_m": [
+        [
+          42.61,
+          5.7
+        ],
+        [
+          39.81,
+          6.1
+        ]
+      ]
+    },
+    {
+      "id": "pwr_comp",
+      "net": "power",
+      "from": "power_a",
+      "to": "comp_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_power",
+      "drop_offset_m": -0.3
+    },
+    {
+      "id": "pwr_chiller",
+      "net": "power",
+      "from": "power_a",
+      "to": "chiller_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_power",
+      "drop_offset_m": 0.17
+    },
+    {
+      "id": "pwr_collector",
+      "net": "power",
+      "from": "power_a",
+      "to": "collector_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_power",
+      "drop_offset_m": -0.6
+    },
+    {
+      "id": "pwr_control",
+      "net": "power",
+      "from": "power_a",
+      "to": "control_room_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_power",
+      "drop_offset_m": -0.1
+    },
+    {
+      "id": "pwr_laser",
+      "net": "power",
+      "from": "power_a",
+      "to": "laser_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_power",
+      "drop_offset_m": 2.0
+    },
+    {
+      "id": "pwr_press1",
+      "net": "power",
+      "from": "power_a",
+      "to": "press_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_power",
+      "drop_offset_m": 0.8
+    },
+    {
+      "id": "pwr_deburr",
+      "net": "power",
+      "from": "power_a",
+      "to": "deburr_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_power",
+      "drop_offset_m": -0.5
+    },
+    {
+      "id": "pwr_washer",
+      "net": "power",
+      "from": "power_a",
+      "to": "washer_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_power",
+      "drop_offset_m": 1.2
+    },
+    {
+      "id": "pwr_ctrl1",
+      "net": "power",
+      "from": "power_a",
+      "to": "ctrl_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_power",
+      "drop_offset_m": 0.0
+    },
+    {
+      "id": "pwr_ctrl2",
+      "net": "power",
+      "from": "power_a",
+      "to": "ctrl_02",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_power",
+      "drop_offset_m": 0.0
+    },
+    {
+      "id": "pwr_ctrl3",
+      "net": "power",
+      "from": "power_a",
+      "to": "ctrl_03",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_power",
+      "drop_offset_m": 0.0
+    },
+    {
+      "id": "pwr_weldsrc",
+      "net": "power",
+      "from": "power_a",
+      "to": "weldsrc_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_power",
+      "drop_offset_m": 0.0
+    },
+    {
+      "id": "pwr_inspect",
+      "net": "power",
+      "from": "power_a",
+      "to": "inspect_final_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_power",
+      "drop_offset_m": -0.2
+    },
+    {
+      "id": "pwr_marking",
+      "net": "power",
+      "from": "power_a",
+      "to": "marking_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_power",
+      "drop_offset_m": 0.0
+    },
+    {
+      "id": "pwr_pack",
+      "net": "power",
+      "from": "power_a",
+      "to": "pack_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_power",
+      "drop_offset_m": -0.4
+    },
+    {
+      "id": "pwr_torchclean",
+      "net": "power",
+      "from": "power_a",
+      "to": "torchclean_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_power",
+      "drop_offset_m": -0.2
+    },
+    {
+      "id": "pwr_dryer",
+      "net": "power",
+      "from": "power_a",
+      "to": "dryer_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_power",
+      "drop_offset_m": 0.0
+    },
+    {
+      "id": "pwr_press2",
+      "net": "power",
+      "from": "power_a",
+      "to": "press_02",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "waypoints_m": [
+        [
+          15.7,
+          3.05
+        ],
+        [
+          15.7,
+          10.6
+        ],
+        [
+          17.2,
+          10.6
+        ]
+      ]
+    },
+    {
+      "id": "air_comp_dryer",
+      "net": "air",
+      "from": "comp_01",
+      "to": "dryer_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "waypoints_m": [
+        [
+          9.2,
+          1.6
+        ],
+        [
+          9.4,
+          1.6
+        ]
+      ]
+    },
+    {
+      "id": "air_dryer_recv",
+      "net": "air",
+      "from": "dryer_01",
+      "to": "receiver_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "waypoints_m": [
+        [
+          10.6,
+          1.6
+        ],
+        [
+          10.95,
+          1.6
+        ]
+      ]
+    },
+    {
+      "id": "air_press1",
+      "net": "air",
+      "from": "receiver_01",
+      "to": "press_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_air",
+      "drop_offset_m": -0.5
+    },
+    {
+      "id": "air_washer",
+      "net": "air",
+      "from": "receiver_01",
+      "to": "washer_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_air",
+      "drop_offset_m": -0.2
+    },
+    {
+      "id": "air_r1",
+      "net": "air",
+      "from": "receiver_01",
+      "to": "robot_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_air",
+      "drop_offset_m": 0.55
+    },
+    {
+      "id": "air_r2",
+      "net": "air",
+      "from": "receiver_01",
+      "to": "robot_02",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_air",
+      "drop_offset_m": 0.55
+    },
+    {
+      "id": "air_r3",
+      "net": "air",
+      "from": "receiver_01",
+      "to": "robot_03",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_air",
+      "drop_offset_m": 0.55
+    },
+    {
+      "id": "air_pack",
+      "net": "air",
+      "from": "receiver_01",
+      "to": "pack_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_air",
+      "drop_offset_m": 0.3
+    },
+    {
+      "id": "air_torchclean",
+      "net": "air",
+      "from": "receiver_01",
+      "to": "torchclean_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "route": "bus_air",
+      "drop_offset_m": 0.2
+    },
+    {
+      "id": "air_press2",
+      "net": "air",
+      "from": "receiver_01",
+      "to": "press_02",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "note": "배치도 가정"
+      },
+      "waypoints_m": [
+        [
+          15.45,
+          3.25
+        ],
+        [
+          15.45,
+          10.2
+        ],
+        [
+          17.2,
+          10.2
+        ]
+      ]
+    },
+    {
+      "id": "gas_weld",
+      "net": "gas",
+      "from": "gas_manifold_01",
+      "to": "weldsrc_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "sourced",
+        "source_ids": [
+          "lincoln_cell"
+        ],
+        "note": "용접 셀에 보호가스 공급 구성"
+      },
+      "waypoints_m": [
+        [
+          40.0,
+          2.5
+        ],
+        [
+          40.0,
+          2.85
+        ],
+        [
+          42.72,
+          2.85
+        ],
+        [
+          42.72,
+          5.22
+        ]
+      ]
+    },
+    {
+      "id": "exh_hood",
+      "net": "exhaust",
+      "from": "collector_01",
+      "to": "fumehood_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "sourced",
+        "source_ids": [
+          "fume_guide",
+          "abb_flexarc"
+        ],
+        "note": "발생원 포집 → 덕트 → 집진기"
+      },
+      "waypoints_m": [
+        [
+          43.6,
+          2.6
+        ],
+        [
+          43.6,
+          7.7
+        ],
+        [
+          41.31,
+          7.7
+        ]
+      ]
+    },
+    {
+      "id": "bundle_ctrl1",
+      "net": "bundle",
+      "from": "ctrl_01",
+      "to": "robot_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "sourced",
+        "source_ids": [
+          "abb_flexarc"
+        ],
+        "note": "로봇 + 컨트롤러 구성"
+      },
+      "waypoints_m": [
+        [
+          33.4,
+          5.3
+        ],
+        [
+          33.4,
+          5.94
+        ]
+      ]
+    },
+    {
+      "id": "bundle_ctrl2",
+      "net": "bundle",
+      "from": "ctrl_02",
+      "to": "robot_02",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "sourced",
+        "source_ids": [
+          "abb_flexarc"
+        ],
+        "note": "로봇 + 컨트롤러 구성"
+      },
+      "waypoints_m": [
+        [
+          36.8,
+          5.3
+        ],
+        [
+          36.8,
+          5.94
+        ]
+      ]
+    },
+    {
+      "id": "bundle_ctrl3",
+      "net": "bundle",
+      "from": "ctrl_03",
+      "to": "robot_03",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "sourced",
+        "source_ids": [
+          "abb_flexarc"
+        ],
+        "note": "로봇 + 컨트롤러 구성"
+      },
+      "waypoints_m": [
+        [
+          39.55,
+          5.3
+        ],
+        [
+          39.55,
+          5.94
+        ]
+      ]
+    },
+    {
+      "id": "bundle_positioner",
+      "net": "bundle",
+      "from": "ctrl_03",
+      "to": "positioner_01",
+      "status": "confirmed",
+      "provenance": {
+        "confidence": "assumed",
+        "source_ids": [
+          "abb_flexarc"
+        ],
+        "note": "외부축은 로봇 제어기가 구동하는 구성이 일반적이라는 가정"
+      },
+      "waypoints_m": [
+        [
+          39.1,
+          5.0
+        ],
+        [
+          39.1,
+          7.4
+        ],
+        [
+          39.4,
+          7.4
+        ]
+      ]
+    }
+  ],
+  "flow": [
+    {
+      "from": "raw_rack_01",
+      "to": "laser_01",
+      "mode": "manual",
+      "route_m": [
+        [
+          4.5,
+          9.9
+        ],
+        [
+          13.4,
+          9.9
+        ],
+        [
+          13.4,
+          9.7
+        ]
+      ]
+    },
+    {
+      "from": "laser_01",
+      "to": "press_01",
+      "mode": "cart",
+      "route_m": [
+        [
+          13.4,
+          9.7
+        ],
+        [
+          19.2,
+          9.7
+        ],
+        [
+          19.2,
+          8.3
+        ]
+      ]
+    },
+    {
+      "from": "laser_01",
+      "to": "press_02",
+      "mode": "cart",
+      "route_m": [
+        [
+          13.4,
+          9.7
+        ],
+        [
+          16.2,
+          9.7
+        ],
+        [
+          16.2,
+          12.7
+        ],
+        [
+          19.2,
+          12.7
+        ]
+      ]
+    },
+    {
+      "from": "press_01",
+      "to": "deburr_01",
+      "mode": "cart",
+      "route_m": [
+        [
+          19.2,
+          8.3
+        ],
+        [
+          22.2,
+          8.3
+        ],
+        [
+          22.2,
+          8.0
+        ],
+        [
+          22.6,
+          8.0
+        ]
+      ]
+    },
+    {
+      "from": "press_02",
+      "to": "deburr_01",
+      "mode": "cart",
+      "route_m": [
+        [
+          19.2,
+          12.7
+        ],
+        [
+          22.2,
+          12.7
+        ],
+        [
+          22.2,
+          8.0
+        ],
+        [
+          22.6,
+          8.0
+        ]
+      ]
+    },
+    {
+      "from": "deburr_01",
+      "to": "washer_01",
+      "mode": "conveyor",
+      "route_m": [
+        [
+          25.4,
+          8.0
+        ],
+        [
+          27.6,
+          8.0
+        ]
+      ]
+    },
+    {
+      "from": "washer_01",
+      "to": "fixture_s1",
+      "mode": "conveyor",
+      "route_m": [
+        [
+          31.8,
+          8.0
+        ],
+        [
+          33.4,
+          8.0
+        ]
+      ]
+    },
+    {
+      "from": "fixture_s1",
+      "to": "fixture_s2",
+      "mode": "conveyor"
+    },
+    {
+      "from": "fixture_s2",
+      "to": "positioner_01",
+      "mode": "conveyor",
+      "route_m": [
+        [
+          36.8,
+          8.0
+        ],
+        [
+          39.55,
+          8.0
+        ]
+      ]
+    },
+    {
+      "from": "positioner_01",
+      "to": "inspect_final_01",
+      "mode": "conveyor",
+      "route_m": [
+        [
+          40.85,
+          8.0
+        ],
+        [
+          45.2,
+          8.0
+        ]
+      ]
+    },
+    {
+      "from": "inspect_final_01",
+      "to": "marking_01",
+      "mode": "conveyor",
+      "route_m": [
+        [
+          47.3,
+          8.0
+        ],
+        [
+          48.7,
+          8.0
+        ]
+      ]
+    },
+    {
+      "from": "marking_01",
+      "to": "pack_01",
+      "mode": "conveyor",
+      "route_m": [
+        [
+          49.7,
+          8.0
+        ],
+        [
+          51.2,
+          8.0
+        ]
+      ]
+    },
+    {
+      "from": "inspect_final_01",
+      "to": "reject_01",
+      "mode": "conveyor",
+      "waypoints_m": [
+        [
+          46.2,
+          9.43
+        ],
+        [
+          46.2,
+          10.9
+        ]
+      ]
+    },
+    {
+      "from": "stock_in_01",
+      "to": "stock_out_01",
+      "mode": "agv",
+      "waypoints_m": [
+        [
+          0.4,
+          13.6
+        ],
+        [
+          56.6,
+          13.6
+        ]
+      ]
+    }
+  ]
+}

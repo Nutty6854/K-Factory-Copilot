@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+/*
+ * K-Factory 색 토큰 (단일 출처).
+ * 값: Figma 2:23 프레임 원본 (figma bro, Dev Mode). 처음엔 1-67 사진 샘플링이었음.
+ * Tailwind 클래스(@theme)와 R3F 맵(FactoryMap의 getComputedStyle)이 둘 다 여기만 읽는다.
+ */
+:root {
+  color-scheme: light;
+
+  --kf-bg: #f3f6f6;
+  --kf-surface: #ffffff;
+  --kf-border: #e1e8e7;
+  --kf-text-1: #203438;
+  --kf-text-2: #63767b;
+  --kf-text-3: #6a8879;
+  --kf-primary: #176c5b;
+  --kf-primary-subtle: #e3f1ee;
+  --kf-normal: #23786a;
+  --kf-warn: #c77700;
+  /* 원본에 색 있는 주의 칩 없음 → 정상 칩과 같은 바탕 */
+  --kf-warn-subtle: #f3f6f6;
+  --kf-warn-text: #ae7018;
+  --kf-danger: #c7473b;
+  --kf-danger-subtle: #fcece9;
+  --kf-danger-row: #fff6f3;
+  --kf-danger-strong: #b43f32;
+  --kf-divider: #e2e8ea;
+  --kf-text-data: #263c42;
+  --kf-on-primary-sub: #d2eae3;
+  --kf-legend-normal-bg: #f3f5f7;
+  --kf-legend-normal-border: #8e97a1;
+  --kf-cand-1-card: #edf5f2;
+  --kf-cand-1-bar: #27836d;
+  --kf-cand-1-track: #dae6e0;
+  --kf-cand-n-card: #f5f7f7;
+  --kf-cand-n-bar: #a1b9b0;
+
+  /* 맵 (R3F) */
+  --kf-map-floor: #edf2ef;
+  --kf-map-grid: #dbe5df;
+  --kf-map-floor-edge: #9bafa1;
+  --kf-equip-face: #ced7d0;
+  --kf-equip-dark: #4c6266;
+  --kf-equip-glass: #9eb5b7;
+  --kf-equip-line: #647f75;
+  --kf-equip-side: #b8c9c0;
+  --kf-equip-light: #f2f5f2;
+  /* 관절·팔 (원본 이름 robot-joint). --kf-robot은 맵 코드 호환용 별칭 */
+  --kf-robot-joint: #507362;
+  --kf-robot: var(--kf-robot-joint);
+  --kf-robot-body: #8daa96;
+  --kf-robot-light: #dce8de;
+  --kf-equip-anom: #cd8c6d;
+  --kf-equip-anom-shade: #95563f;
+  --kf-equip-anom-light: #f2d0b9;
+  --kf-conveyor-1: #c6d5ce;
+  --kf-conveyor-2: #8ca597;
+  --kf-conveyor-3: #6d8e7d;
+  --kf-conveyor-roller: #9dafaa;
+  --kf-map-label: #304c40;
+  --kf-map-label-sub: #637d70;
+  --kf-anom-bang: #ca523b;
+  --kf-label-anom-bg: #fff0ea;
+
+  /* v2 화면 틀 (Figma 5:24 / 7:23): 떠 있는 카드 그림자, 이벤트 행 배경 */
+  --kf-row: #f8faf9;
+  --kf-shadow-card: 0 1px 3px 0 rgb(32 52 56 / 0.05), 0 8px 24px 0 rgb(32 52 56 / 0.08);
+  --kf-shadow-pop: 0 1px 3px 0 rgb(32 52 56 / 0.05), 0 12px 32px 0 rgb(32 52 56 / 0.1);
+  --kf-shadow-bar: 0 1px 0 0 var(--kf-divider);
+}
+
+@theme inline {
+  --font-sans: var(--font-plex-kr), ui-sans-serif, system-ui, sans-serif;
+  --color-row: var(--kf-row);
+  --shadow-card: var(--kf-shadow-card);
+  --shadow-pop: var(--kf-shadow-pop);
+  --shadow-bar: var(--kf-shadow-bar);
+  --color-bg: var(--kf-bg);
+  --color-surface: var(--kf-surface);
+  --color-line: var(--kf-border);
+  --color-ink-1: var(--kf-text-1);
+  --color-ink-2: var(--kf-text-2);
+  --color-ink-3: var(--kf-text-3);
+  --color-primary: var(--kf-primary);
+  --color-primary-subtle: var(--kf-primary-subtle);
+  --color-normal: var(--kf-normal);
+  --color-warn: var(--kf-warn);
+  --color-warn-subtle: var(--kf-warn-subtle);
+  --color-danger: var(--kf-danger);
+  --color-danger-subtle: var(--kf-danger-subtle);
+  --color-danger-row: var(--kf-danger-row);
+  --color-danger-strong: var(--kf-danger-strong);
+  --color-warn-text: var(--kf-warn-text);
+  --color-divider: var(--kf-divider);
+  --color-data: var(--kf-text-data);
+  --color-on-primary-sub: var(--kf-on-primary-sub);
+  --color-legend-normal-bg: var(--kf-legend-normal-bg);
+  --color-legend-normal-border: var(--kf-legend-normal-border);
+  --color-cand-1-card: var(--kf-cand-1-card);
+  --color-cand-1-bar: var(--kf-cand-1-bar);
+  --color-cand-1-track: var(--kf-cand-1-track);
+  --color-cand-n-card: var(--kf-cand-n-card);
+  --color-cand-n-bar: var(--kf-cand-n-bar);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--kf-bg);
+  color: var(--kf-text-1);
+}
