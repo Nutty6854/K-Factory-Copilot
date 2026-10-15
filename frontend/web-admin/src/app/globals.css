@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+/*
+ * K-Factory 색 토큰 (단일 출처).
+ * 값: Figma 2:23 프레임 원본. Tailwind 클래스(@theme)는 여기 토큰만 읽는다.
+ */
+:root {
+  color-scheme: light;
+
+  --kf-bg: #f3f6f6;
+  --kf-surface: #ffffff;
+  --kf-border: #e1e8e7;
+  --kf-text-1: #203438;
+  --kf-text-2: #63767b;
+  --kf-text-3: #6a8879;
+  --kf-primary: #176c5b;
+  --kf-primary-subtle: #e3f1ee;
+  --kf-normal: #23786a;
+  --kf-warn: #c77700;
+  /* 원본에 색 있는 주의 칩 없음 → 정상 칩과 같은 바탕 */
+  --kf-warn-subtle: #f3f6f6;
+  --kf-warn-text: #ae7018;
+  --kf-danger: #c7473b;
+  --kf-danger-subtle: #fcece9;
+  --kf-danger-row: #fff6f3;
+  --kf-danger-strong: #b43f32;
+  --kf-divider: #e2e8ea;
+  --kf-text-data: #263c42;
+  --kf-on-primary-sub: #d2eae3;
+
+
+  /* v2 화면 틀 (Figma 5:24 / 7:23): 떠 있는 카드 그림자, 이벤트 행 배경 */
+  --kf-row: #f8faf9;
+  --kf-shadow-card: 0 1px 3px 0 rgb(32 52 56 / 0.05), 0 8px 24px 0 rgb(32 52 56 / 0.08);
+  --kf-shadow-pop: 0 1px 3px 0 rgb(32 52 56 / 0.05), 0 12px 32px 0 rgb(32 52 56 / 0.1);
+  --kf-shadow-bar: 0 1px 0 0 var(--kf-divider);
+}
+
+@theme inline {
+  --font-sans: var(--font-plex-kr), ui-sans-serif, system-ui, sans-serif;
+  --color-row: var(--kf-row);
+  --shadow-card: var(--kf-shadow-card);
+  --shadow-pop: var(--kf-shadow-pop);
+  --shadow-bar: var(--kf-shadow-bar);
+  --color-bg: var(--kf-bg);
+  --color-surface: var(--kf-surface);
+  --color-line: var(--kf-border);
+  --color-ink-1: var(--kf-text-1);
+  --color-ink-2: var(--kf-text-2);
+  --color-ink-3: var(--kf-text-3);
+  --color-primary: var(--kf-primary);
+  --color-primary-subtle: var(--kf-primary-subtle);
+  --color-normal: var(--kf-normal);
+  --color-warn: var(--kf-warn);
+  --color-warn-subtle: var(--kf-warn-subtle);
+  --color-danger: var(--kf-danger);
+  --color-danger-subtle: var(--kf-danger-subtle);
+  --color-danger-row: var(--kf-danger-row);
+  --color-danger-strong: var(--kf-danger-strong);
+  --color-warn-text: var(--kf-warn-text);
+  --color-divider: var(--kf-divider);
+  --color-data: var(--kf-text-data);
+  --color-on-primary-sub: var(--kf-on-primary-sub);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--kf-bg);
+  color: var(--kf-text-1);
+}

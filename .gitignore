@@ -1,0 +1,14 @@
+# dependencies / build output
+node_modules/
+.next/
+out/
+build/
+*.tsbuildinfo
+
+# secrets
+.env*
+
+# OS / local tools
+.DS_Store
+.claude/
+.kf-shots/
